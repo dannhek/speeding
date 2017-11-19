@@ -1,5 +1,7 @@
 #Functions for Mathematics of Speeding
-for (pkg in c('ggplot2','scales','RColorBrewer')) { 
+
+rm(list=ls())
+for (pkg in c('ggplot2','scales','RColorBrewer','gplots')) { 
   if (!is.element(pkg,installed.packages()[,1])) { 
     r <- getOption("repos") 
     r["CRAN"] <- "http://cran.us.r-project.org" 
@@ -8,7 +10,7 @@ for (pkg in c('ggplot2','scales','RColorBrewer')) {
     install.packages(pkg) 
   } 
   library(pkg,character.only = T) 
-} 
+} ; rm(pkg)
 
 
 
@@ -71,3 +73,4 @@ makeDistanceTraveledGraph <- function(legs=data.frame()) {
         'Time for trip: ',round(funcList[['totals']][2],2),'; '
         ,'Average Speed for Whole Trip: ',round(funcList[["average"]],1),' mph'))
 }
+
